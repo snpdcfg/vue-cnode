@@ -30,7 +30,7 @@ export default {
   width 100%
   background #444
   .head-box
-    line-height 50px
+    line-height 1rem
     width 80%
     margin 0 auto
     display flex

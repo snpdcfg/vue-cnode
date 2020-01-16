@@ -1,19 +1,19 @@
 <template>
   <div id="app">
     <he></he>
-    <content></content>
+    <invitation></invitation>
   </div>
 </template>
 
 <script>
 import He from './components/He'
-import Content from './components/Content'
+import Invitation from './components/Invitation'
 
 export default {
   name: 'App',
   components: {
     He,
-    Content
+    Invitation
   }
 }
 </script>
