@@ -1,10 +1,10 @@
 <template>
   <div class="head">
-    <div class="head-box">
+    <div class="head-box clearfix">
       <div class="seek">
         <input type="text">
       </div>
-      <div class="navigation">
+      <div class="navigation clearfix">
         <ul>
           <li><a href="">首页</a></li>
           <li><a href="">新手入门</a></li>
@@ -26,22 +26,22 @@ export default {
 
 <style lang="stylus" scoped>
 .head
-  height 1rem
+  height 50px
   width 100%
   background #444
+  @media screen and (max-width: 669px)
+    height 100px
   .head-box
-    line-height 1rem
+    line-height 50px
     width 80%
     margin 0 auto
-    display flex
-    flex-direction row
     .seek
-      flex 1
+      float left
       & > input
-        border-radius 1.1rem
+        border-radius 55px
         background #ccc
-        height 0.5rem
-        width 4.5rem
+        height 25px
+        width 225px
         transition all 1s linear
         &:hover
           background #fff
@@ -49,9 +49,12 @@ export default {
           transition all 0.1s linear
     .navigation
       & > ul
-        display flex
+        float right
+        @media screen and (max-width: 669px)
+          float left
         & > li
-          padding 0 0.4rem 0 0
+          float left
+          padding 0 20px 0 0
           & > a
             color #ccc
             &:hover

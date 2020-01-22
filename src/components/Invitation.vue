@@ -1,22 +1,24 @@
 <template>
   <div class="content">
     <div class="headline">
-      <div class="headline-box">
+      <div v-for="(list, index) in posts "
+           v-bind:key="index"
+           class="headline-box clearfix">
         <div class="portrait">
-          <img src="https://avatars3.githubusercontent.com/u/33857095?v=4&s=120"
-               alt="">
-          <span>5</span>
+          <a href="">
+            <img :src="list.author.avatar_url"
+                 alt="">
+          </a>
+          <span>{{list.reply_count}}</span>
           <span>/</span>
-          <span>3600</span>
+          <span>{{list.visit_count}}</span>
         </div>
         <div class="news">
           <span>置顶</span>
-          <p>第三届 SEE Conf 全天场回顾，围观玉伯,天猪，死马都讲了啥</p>
+          <a href="">{{list.title}}</a>
         </div>
         <div class="time">
-          <img src="https://avatars3.githubusercontent.com/u/33857095?v=4&s=120"
-               alt="">
-          <span>3小时前</span>
+          <span>{{ list.last_reply_at}}</span>
         </div>
       </div>
     </div>
@@ -25,47 +27,55 @@
 
 <script>
 export default {
-  name: 'Invitation'
+  name: 'Invitation',
+  data () {
+    return {
+      posts: [],
+      loading: false
+    }
+  },
+  created: function () {
+    this.$store.dispatch('getList').then(response => {
+      this.posts = response.data.data
+    })
+  }
 }
 </script>
 
 <style lang="stylus" scoped>
 .content
-  width 80%
-  margin 0 auto
   background #ccc
 .headline
-  height 1rem
+  background #fff
+  width 80%
+  margin 0 auto
+  height 50px
+  @media screen and (max-width: 800px)
+    width 100%
   .headline-box
     padding 10px 10px 10px 10px
-    line-height 0.6rem
-    display flex
-    flex-direction row
+    line-height 26px
     width 95%
-    height 0.6rem
+    height 26px
     margin 0 auto
     .portrait
-      & > img
-        padding 0 0.3rem 0 0
-        width 0.6rem
-        height 0.6rem
+      float left
+      & > a
+        & > img
+          padding 0 15px 0 0
+          width 30px
+          height 30px
     .news
-      flex auto
-      display flex
-      padding 0 0 0 0.4rem
-      & > span
-        color #fff
-        background #80bd01
-        font-size 10px
-        height 0.36rem
-        width 0.6rem
-        margin-top 5px
-        line-height 0.36rem
-        text-align center
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
+      float left
+      padding 0 0 0 20px
+      & > span, & > a
+        color #000
+        display inline-block
     .time
-      display flex
-      & > img
-        line-height 1rem
-        width 0.36rem
-        height 0.36rem
+      white-space nowrap
+      width 72px
+      float right
 </style>
