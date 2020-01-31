@@ -12,8 +12,8 @@ export default {
     getList () {
       return beg(API.list)
     },
-    getLists () {
-      return API.lists
+    getContent () {
+      return API.lars
     }
   }
 }

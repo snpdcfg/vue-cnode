@@ -11,7 +11,7 @@ function exec (cmd) {
 const versionRequirements = [
   {
     name: 'node',
-    currentVersion: semver.clean(process.version)
+    currentVersion: semver.clean(process.version),
     versionRequirement: packageConfig.engines.node
   }
 ]
