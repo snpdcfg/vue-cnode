@@ -11,5 +11,8 @@ export default {
   },
   lars: {
     url: 'https://cnodejs.org/api/v1/topic/'
+  },
+  user: {
+    url: 'https://cnodejs.org/api/v1/user/'
   }
 }

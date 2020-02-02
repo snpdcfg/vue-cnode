@@ -15,7 +15,7 @@
         </div>
         <div class="news">
           <span>置顶</span>
-          <router-link to="/essay">{{list.title}}</router-link>
+          <router-link :to="{name: 'essay', params: {name: list.author.loginname}}">{{list.title}}</router-link>
         </div>
         <div class="time">
           <span>{{ list.last_reply_at | capitalize}}</span>

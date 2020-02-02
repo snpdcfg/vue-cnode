@@ -22,11 +22,8 @@
       </div>
       <div class="recently-content">
         <ul>
-          <li>此处发帖无限制，不会在首页展示，不影响用户正常使用，千万不要随便回复别人的帖子</li>
-          <li>此处发帖无限制，不会在首页展示，不影响用户正常使用，千万不要随便回复别人的帖子</li>
-          <li>此处发帖无限制，不会在首页展示，不影响用户正常使用，千万不要随便回复别人的帖子</li>
-          <li>此处发帖无限制，不会在首页展示，不影响用户正常使用，千万不要随便回复别人的帖子</li>
-          <li>此处发帖无限制，不会在首页展示，不影响用户正常使用，千万不要随便回复别人的帖子</li>
+          <li v-for="(topics,index) in recent_topics"
+              v-bind:key="index">{{topics.title}}</li>
         </ul>
       </div>
       <div class="reply">
@@ -35,11 +32,8 @@
         </div>
         <div class="reply-content">
           <ul>
-            <li>关于 Egg 中单元测试的问题，求指导</li>
-            <li>关于 Egg 中单元测试的问题，求指导</li>
-            <li>关于 Egg 中单元测试的问题，求指导</li>
-            <li>关于 Egg 中单元测试的问题，求指导</li>
-            <li>关于 Egg 中单元测试的问题，求指导</li>
+            <li v-for="(replise,index) in recent_replies"
+                v-bind:key="index">{{replise.title}}</li>
           </ul>
         </div>
       </div>
@@ -48,8 +42,26 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'User'
+  name: 'User',
+  data () {
+    return {
+      id: 'i5ting',
+      recent_topics: [],
+      recent_replies: [],
+      user: []
+    }
+  },
+  created: function () {
+    this.$store.dispatch('getUser').then(response => {
+      axios.get(response.url + this.id, {})
+        .then((response) => {
+          this.recent_topics = response.data.data.recent_topics
+          this.recent_replies = response.data.data.recent_replies
+        })
+    })
+  }
 }
 </script>
 
@@ -81,10 +93,21 @@ export default {
     .recently-content
       background-color #fff
       padding 10px
-      & > li
-        ellipsis()
+      & > ul
+        & > li
+          color #778087
+          padding 6px
+          ellipsis()
   .reply
     margin-top 16px
     .reply-title
       title()
+    .reply-content
+      padding 10px
+      background-color #fff
+      & > ul
+        & > li
+          color #778087
+          padding 6px
+          ellipsis()
 </style>

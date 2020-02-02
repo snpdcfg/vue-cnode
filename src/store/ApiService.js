@@ -14,6 +14,9 @@ export default {
     },
     getContent () {
       return API.lars
+    },
+    getUser () {
+      return API.user
     }
   }
 }
