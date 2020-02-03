@@ -17,7 +17,7 @@ export default new Router({
       }
     },
     {
-      path: '/essay',
+      path: '/essay/:id&auther=:name',
       name: 'essay',
       components: {
         left: Particulars,

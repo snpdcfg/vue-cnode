@@ -55,7 +55,7 @@ export default {
   },
   created: function () {
     this.$store.dispatch('getUser').then(response => {
-      axios.get(response.url + this.id, {})
+      axios.get(response.url + this.$route.params.name, {})
         .then((response) => {
           this.recent_topics = response.data.data.recent_topics
           this.recent_replies = response.data.data.recent_replies
@@ -96,7 +96,7 @@ export default {
       & > ul
         & > li
           color #778087
-          padding 6px
+          padding 10px
           ellipsis()
   .reply
     margin-top 16px
@@ -108,6 +108,6 @@ export default {
       & > ul
         & > li
           color #778087
-          padding 6px
+          padding 10px
           ellipsis()
 </style>

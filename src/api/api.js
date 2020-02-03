@@ -1,6 +1,7 @@
 export default {
   list: {
     url: 'https://cnodejs.org/api/v1/topics',
+    // 本来是想分页的，但是接口好像没有
     params: (page = 1) => {
       return {
         page: page,

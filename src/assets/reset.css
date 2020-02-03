@@ -29,3 +29,6 @@ a {color: #25a4bb;text-decoration: none;}
   display: block;
   clear: both;
 }
+img{
+  width: 100%;
+}
