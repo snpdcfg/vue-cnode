@@ -22,8 +22,12 @@
       </div>
       <div class="recently-content">
         <ul>
+          <!--  <li v-for="(topics,index) in recent_topics"
+              v-bind:key="index">{{topics.title}}</li> -->
           <li v-for="(topics,index) in recent_topics"
-              v-bind:key="index">{{topics.title}}</li>
+              v-bind:key="index">
+            <router-link :to="{name: 'essay', params: {id: topics.id,name:topics.author.loginname}}">{{topics.title}}</router-link>
+          </li>
         </ul>
       </div>
       <div class="reply">
@@ -70,6 +74,8 @@ export default {
 .right
   width 25%
   float right
+  @media screen and (max-width: 900px)
+    display none
   .autho
     .autho-title
       title()

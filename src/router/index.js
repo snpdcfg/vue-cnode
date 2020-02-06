@@ -20,8 +20,15 @@ export default new Router({
       path: '/essay/:id&auther=:name',
       name: 'essay',
       components: {
-        left: Particulars,
+        main: Particulars,
         right: User
+      }
+    },
+    {
+      path: '/user/:name',
+      name: 'user',
+      components: {
+        main: User
       }
     }
   ]

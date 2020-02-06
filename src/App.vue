@@ -3,7 +3,7 @@
     <he></he>
     <router-view></router-view>
     <div class="essay clearfix">
-      <router-view name="left"></router-view>
+      <router-view name="main"></router-view>
       <router-view name="right"></router-view>
     </div>
   </div>

@@ -1,5 +1,9 @@
 <template>
   <div class="particulars">
+    <div class="loading"
+         v-if="loading">
+      Loading...
+    </div>
     <div class="title">
       <span>{{data.title}}</span>
       <div class="source">
@@ -42,15 +46,18 @@ export default {
   name: 'Particulars',
   data () {
     return {
-      data: []
+      data: [],
+      loading: false
     }
   },
   created: function () {
     this.$store.dispatch('getContent').then(response => {
       axios.get(response.url + this.$route.params.id, {})
         .then((response) => {
-          console.log(response.data.data)
-          this.data = response.data.data
+          if (response.data.success === true) {
+            this.data = response.data.data
+            this.loading = false
+          }
         })
     })
   }
@@ -62,6 +69,8 @@ export default {
 .particulars
   float left
   width 74%
+  @media screen and (max-width: 900px)
+    width 100%
   .title
     background #fff
     padding 12px
@@ -76,17 +85,21 @@ export default {
         font-size 12px
         color #838383
   .left-box
-    background #fff
+    .essay
+      background-color #fff
     margin-top 2px
     .comment
       margin-top 20px
       .comment-title
         title()
     .comment-box
-      margin-top 3px
+      background #fff
+      margin-top 1px
       .use
         padding 12px
       img
         width 30px
         height 30px
+      .text
+        margin-left 16px
 </style>

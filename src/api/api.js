@@ -5,7 +5,7 @@ export default {
     params: (page = 1) => {
       return {
         page: page,
-        limit: 1,
+        limit: 20,
         _: new Date().getTime()
       }
     }
